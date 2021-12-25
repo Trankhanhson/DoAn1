@@ -75,7 +75,7 @@ namespace Project.Utility
                     if (key.Key == ConsoleKey.Backspace && pass.Length > 0)
                     {
                         pass = pass.Substring(0, (pass.Length - 1));
-                        Console.Write("\b \b");
+                        Console.Write("\b \b");//lùi con trỏ lại 1 đơn vị rồi ghi khoảng trắng vào rồi lùi tiếp
                     }
                     else if (key.Key == ConsoleKey.Enter)
                     {
