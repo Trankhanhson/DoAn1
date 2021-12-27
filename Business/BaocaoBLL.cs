@@ -156,12 +156,16 @@ namespace Project.Business
             //công dồn các vật liệu bán được vào
             foreach(Vatlieu vl in dsvatlieu)
             {
-                vl.Soluong = 0;
-                foreach(CTHoadon ct in cthdOfMonth)
-                {
+                vl.Soluong = 0;//lấy trường số lượng để chứa tổng số lượng bán được
+                vl.Gianhap = 0;//lấy trường giá bán để chứa tiền lãi từ vật liệu đó
+                vl.Giaban = 0;//lấy trường giá nhập để chứa doanh thu của vật liệu đó
+                foreach (CTHoadon ct in cthdOfMonth)
+                {                   
                     if (ct.Mavl == vl.Ma)
-                    {
+                    {                       
                         vl.Soluong+=ct.Soluong;
+                        vl.Gianhap += ct.Tienlai;
+                        vl.Giaban += ct.Tongtien;
                     }
                 }
             }

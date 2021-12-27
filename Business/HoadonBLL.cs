@@ -27,9 +27,7 @@ namespace Project.Business
             {
                 khachhang.ThemCongno(h.Makh, no);
             }
-        }
-
-        
+        }      
 
         public Hoadon GetHD(string ma)
         {
@@ -156,7 +154,16 @@ namespace Project.Business
             }
             return sum;
         }
-       
+        
+        public int TienlaiBill(List<CTHoadon> ds)
+        {
+            int tienlai = 0;//biến cộng dồn để tìm tiền lãi của bill
+            foreach (CTHoadon b in ds)
+            {
+                tienlai += b.Tienlai;
+            }
+            return tienlai;
+        }
 
         public List<Hoadon> GetHDChuaThanhToan(string makh)
         {

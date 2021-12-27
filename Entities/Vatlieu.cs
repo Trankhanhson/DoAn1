@@ -33,12 +33,12 @@ namespace Project.Entities
         public int Giaban
         {
             get { return giaban; }
-            set { if (value > 0) giaban = value; }
+            set { if (value >= 0) giaban = value; }
         }
         public int Gianhap
         {
             get { return gianhap; }
-            set { if (value > 0) gianhap = value; }
+            set { if (value >= 0) gianhap = value; }
 
         }
         public int Soluong

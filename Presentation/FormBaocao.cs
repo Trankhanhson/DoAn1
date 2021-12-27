@@ -18,7 +18,6 @@ namespace Project.Presentation
 
         public void Baocaongay()
         {
-
             Console.WriteLine("Thời gian:   /   /");
             Console.WriteLine();
             DateTime time;
@@ -98,6 +97,7 @@ namespace Project.Presentation
             Console.WriteLine("  Chi tiết báo cáo tháng");
             Console.WriteLine();
             int songay = Tool.NgayTrongThang(time.Year, time.Month);
+            
             Console.WriteLine($"  {"Ngày",-8}{"Doanh thu",-20}{"Thực thu",-20}{"Lợi nhuận gộp",-20}{"Lợi nhuận ròng",-20}{"Tổng chi"}");
 
             for (int i = 1; i <= songay; i++)
@@ -194,10 +194,10 @@ namespace Project.Presentation
             Tool.WriteXY(3, 4, "                                   ");
             Console.WriteLine("\n");
 
-            Console.WriteLine($"    {"Mã vật liệu",-20}{"Tên vật liệu",-20}{"Số lượng bán",-20}{"Đơn vị"}");
+            Console.WriteLine($"    {"Mã vật liệu",-20}{"Tên vật liệu",-20}{"Số lượng bán",-15}{"Đơn vị",-15}{"Doanh thu",-15}{"Lợi nhuận"}");
             foreach (Vatlieu vl in baocao.ThongkeVL(thang, nam))
             {
-                Console.WriteLine($"    {vl.Ma,-20}{vl.Ten,-20}{vl.Soluong,-20}{vl.Donvitinh}");
+                Console.WriteLine($"    {vl.Ma,-20}{vl.Ten,-20}{vl.Soluong,-15}{vl.Donvitinh,-15}{String.Format("{0:0,0}",vl.Giaban),-15}{String.Format("{0:0,0}",vl.Gianhap)}");
             }
             Console.WriteLine();
 

@@ -13,3 +13,18 @@ D:\back_end\Project\Project\obj\Debug\net6.0\Project.dll
 D:\back_end\Project\Project\obj\Debug\net6.0\ref\Project.dll
 D:\back_end\Project\Project\obj\Debug\net6.0\Project.pdb
 D:\back_end\Project\Project\obj\Debug\net6.0\Project.genruntimeconfig.cache
+D:\Do an 1\bin\Debug\net6.0\Project.exe
+D:\Do an 1\bin\Debug\net6.0\Project.deps.json
+D:\Do an 1\bin\Debug\net6.0\Project.runtimeconfig.json
+D:\Do an 1\bin\Debug\net6.0\Project.dll
+D:\Do an 1\bin\Debug\net6.0\ref\Project.dll
+D:\Do an 1\bin\Debug\net6.0\Project.pdb
+D:\Do an 1\obj\Debug\net6.0\Project.csproj.AssemblyReference.cache
+D:\Do an 1\obj\Debug\net6.0\Project.GeneratedMSBuildEditorConfig.editorconfig
+D:\Do an 1\obj\Debug\net6.0\Project.AssemblyInfoInputs.cache
+D:\Do an 1\obj\Debug\net6.0\Project.AssemblyInfo.cs
+D:\Do an 1\obj\Debug\net6.0\Project.csproj.CoreCompileInputs.cache
+D:\Do an 1\obj\Debug\net6.0\Project.dll
+D:\Do an 1\obj\Debug\net6.0\ref\Project.dll
+D:\Do an 1\obj\Debug\net6.0\Project.pdb
+D:\Do an 1\obj\Debug\net6.0\Project.genruntimeconfig.cache

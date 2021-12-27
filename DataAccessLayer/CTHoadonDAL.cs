@@ -12,7 +12,7 @@ namespace Project.DataAccessLayer
         public void Insert(CTHoadon c)
         {
             StreamWriter w = File.AppendText(fileCTHD);
-            w.WriteLine(c.Mahd + "*" + c.Mavl + "*" + c.Soluong + "*" + c.Tongtien);
+            w.WriteLine(c.Mahd + "*" + c.Mavl + "*" + c.Soluong + "*" + c.Tongtien+"*"+c.Tienlai);
             w.Close();
         }
         public List<CTHoadon> GetAllData()
@@ -25,7 +25,7 @@ namespace Project.DataAccessLayer
                 if (s != "")
                 {
                     string[] a = s.Split('*');
-                    CTHoadon b = new CTHoadon(a[0], a[1], int.Parse(a[2]), int.Parse(a[3]));
+                    CTHoadon b = new CTHoadon(a[0], a[1], int.Parse(a[2]), int.Parse(a[3]), int.Parse(a[4]));
                     ds.Add(b);
                 }
                 s = r.ReadLine();
@@ -40,7 +40,7 @@ namespace Project.DataAccessLayer
             {
                 if (a != null)
                 {
-                    w.WriteLine(a.Mahd + "*" + a.Mavl + "*" + a.Soluong + "*" + a.Tongtien);
+                    w.WriteLine(a.Mahd + "*" + a.Mavl + "*" + a.Soluong + "*" + a.Tongtien+"*"+a.Tienlai);
                 }
             }
             w.Close();

@@ -9,7 +9,7 @@ namespace Project
         static void Main()
         {
             LogIn logIn = new LogIn();
-            int count = logIn.CheckLogIn("ĐỒ ÁN 1", "125202");
+            int count = logIn.CheckLogIn("DA1", "125202");
             if (count <= 4)
             {
                 Hien();

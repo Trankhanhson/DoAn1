@@ -14,5 +14,6 @@ namespace Project.Business
         int TongTienBill(List<CTHoadon> ds);//Tính tổng tiền của hóa đơn
         List<Hoadon> GetHDChuaThanhToan(string makh);
         void SuaHD(Hoadon hd);
+        int TienlaiBill(List<CTHoadon> ds);//Tính tiền lãi cho bill
     }
 }

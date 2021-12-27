@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 namespace Project.Utility
 {
-    public static class Tool
+    public class Tool
     {
 
 
@@ -129,11 +129,14 @@ namespace Project.Utility
             } while (true);
             return Catxau(newInfo);
         }
+
         public static void WriteXY(int x,int y,string str)
         {
             Console.SetCursorPosition(y, x);
             Console.Write(str);
         }
+
+       
 
         public static void overwriteOldInfo(int x,int y,string newinfo,string oldinfo)
         {

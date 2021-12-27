@@ -235,6 +235,7 @@ namespace Project.Presentation
                     Tool.WriteXY(y, x, "                                                        ");                 
 
                     ct.Tongtien=cthoadon.TongCtHoadon(ct.Mavl,ct.Soluong);
+                    ct.Tienlai = cthoadon.TienlaiCTHD(ct.Mavl,ct.Soluong);
                     Tool.WriteXY(indexline,97,String.Format("{0:0,0}",ct.Tongtien));
 
                     ListCTHoadons.Add(ct);
@@ -247,7 +248,7 @@ namespace Project.Presentation
                 hd.Tongtien = hoadon.TongTienBill(ListCTHoadons);
 
                 //Tính tiền lãi của bill
-                hd.Tienlai = cthoadon.TinhtienLaiBill(ListCTHoadons);
+                hd.Tienlai = hoadon.TienlaiBill(ListCTHoadons);
 
                 //in ra tổng tiền và nhập tiền khách hàng đã thanh toán
                 Tool.WriteXY(indexline+2,0,"             Tổng tiên phải thanh toán:                           Khách thanh toán:  ");
@@ -496,6 +497,7 @@ namespace Project.Presentation
             }
 
         }
+
         public void Tim()
         {
             char check;

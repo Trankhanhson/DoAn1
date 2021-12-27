@@ -10,6 +10,6 @@ namespace Project.Business
         List<CTHoadon> TimCTHD(string mhd);//lấy ra chi tiết hóa đơn của một hóa đơn
         void XoaCTHD(string mahd);        
         int TongCtHoadon(string mavl, int soluong);
-        int TinhtienLaiBill(List<CTHoadon> ds);
+        int TienlaiCTHD(string mavl, int soluong);
     }
 }

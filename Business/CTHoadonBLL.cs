@@ -32,6 +32,7 @@ namespace Project.Business
             
             vatlieuDAL.Update(vatlieus);
         }
+
         public int TongCtHoadon(string mavl,int soluong)
         {
             int tongtien = 0;
@@ -45,6 +46,7 @@ namespace Project.Business
             }
             return tongtien;
         }
+
         public void XoaCTHD(string mahd)
         {
             List<CTHoadon> ds = cthd.GetAllData();//vị trí đầu tệp là vị trí đầu danh sách
@@ -76,7 +78,6 @@ namespace Project.Business
             vatlieuDAL.Update(dsvl);
             
         }
-
         
         public List<CTHoadon> TimCTHD(string mahd)
         {
@@ -97,20 +98,16 @@ namespace Project.Business
             }
             return result;
         }
-
-        public int TinhtienLaiBill(List<CTHoadon> ds)
+       
+        public int TienlaiCTHD(string mavl, int soluong)
         {
-            List<Vatlieu> vatlieus=vatlieuDAL.GetAllData();
             int tienlai = 0;
-            foreach(CTHoadon d in ds)
+            foreach (Vatlieu v in vatlieuDAL.GetAllData())
             {
-                foreach(Vatlieu vl in vatlieus)
+                if (v.Ma == mavl)
                 {
-                    if (d.Mavl == vl.Ma)
-                    {
-                        tienlai += ((vl.Giaban - vl.Gianhap) * d.Soluong);
-                        break;
-                    }
+                    tienlai = (v.Giaban-v.Gianhap) * soluong;
+                    break;
                 }
             }
             return tienlai;
