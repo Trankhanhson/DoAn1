@@ -175,23 +175,25 @@ namespace Project.Presentation
   ║════════════════════════════════════════════════════════║
   ║ 1. THÊM PHIẾU NHẬP HÀNG MỚI                            ║
   ║════════════════════════════════════════════════════════║
-  ║ 2. XÓA PHIẾU NHẬP HÀNG                                 ║                                     
+  ║ 2. SỬA PHIẾU NHẬP HÀNG                                 ║
   ║════════════════════════════════════════════════════════║
-  ║ 3. TÌM KIẾM THÔNG TIN PHIẾU NHẬP                       ║
+  ║ 3. XÓA PHIẾU NHẬP HÀNG                                 ║                                     
   ║════════════════════════════════════════════════════════║
-  ║ 4. QUAY VỀ TRANG TRƯỚC                                 ║
+  ║ 4. TÌM KIẾM THÔNG TIN PHIẾU NHẬP                       ║
+  ║════════════════════════════════════════════════════════║
+  ║ 5. QUAY VỀ TRANG TRƯỚC                                 ║
   ║════════════════════════════════════════════════════════║
   ║ MỜI CHỌN CHỨC NĂNG:                                    ║
   ╚════════════════════════════════════════════════════════╝                                     ");
                 int checkHD;
-                Console.SetCursorPosition(0, 15); hdn.Hien();
+                Console.SetCursorPosition(0, 17); hdn.Hien();
                 do
                 {
                     while (true)
                     {
                         try
                         {
-                            Console.SetCursorPosition(25, 11);
+                            Console.SetCursorPosition(25, 13);
                             checkHD = int.Parse(Console.ReadLine());
                             break;
                         }
@@ -211,19 +213,23 @@ namespace Project.Presentation
                             break;
                         case 2:
                             Console.Clear();
-                            hdn.Xoa();                            
+                            hdn.Sua();
                             break;
                         case 3:
+                            Console.Clear();
+                            hdn.Xoa();                            
+                            break;
+                        case 4:
                             Console.Clear();
                             hdn.Tim();                           
                             break;
 
-                        case 4:
+                        case 5:
                             Console.Clear();
                             break;
                     }
-                } while (checkHD < 1 || checkHD > 4);
-                if (checkHD == 4)
+                } while (checkHD < 1 || checkHD > 5);
+                if (checkHD == 5)
                 {
                     break;
                 }
@@ -550,9 +556,11 @@ namespace Project.Presentation
   ║════════════════════════════════════════════════════════║
   ║ 3. BÁO CÁO NĂM                                         ║
   ║════════════════════════════════════════════════════════║
-  ║ 4. THỐNG KÊ VẬT LIỆU                                   ║
+  ║ 4. THỐNG KÊ VẬT LIỆU THEO THÁNG                        ║
   ║════════════════════════════════════════════════════════║
-  ║ 5. QUAY VỀ TRANG TRƯỚC                                 ║
+  ║ 5. THỐNG KÊ VẬT LIỆU THEO NĂM                          ║
+  ║════════════════════════════════════════════════════════║
+  ║ 6. QUAY VỀ TRANG TRƯỚC                                 ║
   ║════════════════════════════════════════════════════════║
   ║ MỜI CHỌN CHỨC NĂNG:                                    ║
   ╚════════════════════════════════════════════════════════╝");
@@ -563,7 +571,7 @@ namespace Project.Presentation
                     {
                         try
                         {
-                            Console.SetCursorPosition(25, 13);
+                            Console.SetCursorPosition(25, 15);
                             checkKH = int.Parse(Console.ReadLine());
                             break;
                         }
@@ -591,16 +599,20 @@ namespace Project.Presentation
                             break;
                         case 4:
                             Console.Clear();
-                            bc.ThongkeVL();
+                            bc.ThongkeVLThang();
+                            break;
+                        case 5:
+                            Console.Clear();
+                            bc.ThongkeVLNam();
                             break;
 
-                        case 5:
+                        case 6:
                             Console.Clear();
                             break;
 
                     }
-                } while (checkKH < 1 || checkKH > 5);
-                if (checkKH == 5)
+                } while (checkKH < 1 || checkKH > 6);
+                if (checkKH == 6)
                 {
                     break;
                 }

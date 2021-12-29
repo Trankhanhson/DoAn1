@@ -123,7 +123,7 @@ namespace Project.Business
             return bcnam;
         }
 
-        public List<Vatlieu> ThongkeVL(int thang, int nam)
+        public List<Vatlieu> ThongkeVLThang(int thang, int nam)
         {
             List<Vatlieu> dsvatlieu=VatlieuDAL.GetAllData();
             List<Hoadon> dshd=hdban.GetAllData();
@@ -164,6 +164,56 @@ namespace Project.Business
                     if (ct.Mavl == vl.Ma)
                     {                       
                         vl.Soluong+=ct.Soluong;
+                        vl.Gianhap += ct.Tienlai;
+                        vl.Giaban += ct.Tongtien;
+                    }
+                }
+            }
+
+            return dsvatlieu;
+        }
+
+        public List<Vatlieu> ThongkeVLNam(int nam)
+        {
+            List<Vatlieu> dsvatlieu = VatlieuDAL.GetAllData();
+            List<Hoadon> dshd = hdban.GetAllData();
+            List<CTHoadon> dscthd = cthd.GetAllData();
+            List<CTHoadon> cthdOfYear = new List<CTHoadon>();
+
+            bool check;
+
+            //lấy danh sách cthd của tháng đó
+            foreach (Hoadon hoadon in dshd)
+            {
+                if (hoadon.Ngayxuat.Year == nam)
+                {
+                    check = false;
+                    for (int i = dscthd.Count - 1; i >= 0; i--)
+                    {
+                        if (dscthd[i].Mahd == hoadon.Mahd)
+                        {
+                            cthdOfYear.Add(dscthd[i]);
+                            check = true;
+                        }
+                        else if (check == true)//vì cthd có mã hóa đơn luôn đứng cạnh nhau
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //công dồn các vật liệu bán được vào
+            foreach (Vatlieu vl in dsvatlieu)
+            {
+                vl.Soluong = 0;//lấy trường số lượng để chứa tổng số lượng bán được
+                vl.Gianhap = 0;//lấy trường giá bán để chứa tiền lãi từ vật liệu đó
+                vl.Giaban = 0;//lấy trường giá nhập để chứa doanh thu của vật liệu đó
+                foreach (CTHoadon ct in cthdOfYear)
+                {
+                    if (ct.Mavl == vl.Ma)
+                    {
+                        vl.Soluong += ct.Soluong;
                         vl.Gianhap += ct.Tienlai;
                         vl.Giaban += ct.Tongtien;
                     }

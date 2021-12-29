@@ -110,6 +110,7 @@ namespace Project.Presentation
             }
             Tool.StopScreen();
         }
+
         public void Baocaonam()
         {
 
@@ -157,7 +158,8 @@ namespace Project.Presentation
             Console.WriteLine();
             Tool.StopScreen();
         }
-        public void ThongkeVL()
+
+        public void ThongkeVLThang()
         {
             int thang, nam;
             DateTime tmp;
@@ -195,9 +197,43 @@ namespace Project.Presentation
             Console.WriteLine("\n");
 
             Console.WriteLine($"    {"Mã vật liệu",-20}{"Tên vật liệu",-20}{"Số lượng bán",-15}{"Đơn vị",-15}{"Doanh thu",-15}{"Lợi nhuận"}");
-            foreach (Vatlieu vl in baocao.ThongkeVL(thang, nam))
+            foreach (Vatlieu vl in baocao.ThongkeVLThang(thang, nam))
             {
                 Console.WriteLine($"    {vl.Ma,-20}{vl.Ten,-20}{vl.Soluong,-15}{vl.Donvitinh,-15}{String.Format("{0:0,0}",vl.Giaban),-15}{String.Format("{0:0,0}",vl.Gianhap)}");
+            }
+            Console.WriteLine();
+
+            Tool.StopScreen();
+        }
+
+        public void ThongkeVLNam()
+        {
+            int nam;
+            
+            Console.WriteLine("\n    Mời nhập năm: ");
+            while (true)
+            {
+                try
+                {
+                    Console.SetCursorPosition(18, 1);
+                    nam=int.Parse(Console.ReadLine());
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Tool.WriteXY(3,4,"Bạn nhập sai định dạng");
+                }
+
+            }
+            Tool.WriteXY(3, 4, "                                   ");
+            Console.WriteLine("\n");
+
+            List<Vatlieu> vatlieus = baocao.ThongkeVLNam(nam);           
+
+            Console.WriteLine($"    {"Mã vật liệu",-20}{"Tên vật liệu",-20}{"Số lượng bán",-15}{"Đơn vị",-15}{"Doanh thu",-15}{"Lợi nhuận"}");
+            foreach (Vatlieu vl in vatlieus)
+            {
+                Console.WriteLine($"    {vl.Ma,-20}{vl.Ten,-20}{vl.Soluong,-15}{vl.Donvitinh,-15}{String.Format("{0:0,0}", vl.Giaban),-15}{String.Format("{0:0,0}", vl.Gianhap)}");
             }
             Console.WriteLine();
 

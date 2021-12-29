@@ -26,6 +26,7 @@ namespace Project.Business
                 }
             }
         }
+
         public List<HDNhap> TimHDN(HDNhap hdn)
         {
             List<HDNhap> ds = hoadonnhap.GetAllData();

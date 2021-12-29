@@ -41,8 +41,8 @@ namespace Project.Utility
             return soma;
 
         }
-        //hàm trả về true thì chuỗi không có kí tự khác số còn false thì ngược lại
 
+        //hàm trả về true thì chuỗi không có kí tự khác số còn false thì ngược lại
         public static bool DuyetChuoiSo(string a)
         {
             bool check = true;
@@ -137,7 +137,6 @@ namespace Project.Utility
         }
 
        
-
         public static void overwriteOldInfo(int x,int y,string newinfo,string oldinfo)
         {
                       

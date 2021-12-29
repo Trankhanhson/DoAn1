@@ -10,6 +10,7 @@ namespace Project.Business
         Baocao Baocaongay(DateTime time);
         Baocao Baocaonam(int nam);       
         List<Hoadon> TimeHoadon(DateTime time);
-        List<Vatlieu> ThongkeVL(int thang, int nam);
+        List<Vatlieu> ThongkeVLThang(int thang, int nam);
+        List<Vatlieu> ThongkeVLNam(int nam);
     }
 }

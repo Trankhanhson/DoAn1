@@ -304,7 +304,125 @@ namespace Project.Presentation
                 }
             }
         }
-      
+
+        public void Sua()
+        {
+            while (true)
+            {
+
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("                                                  HÓA ĐƠN NHẬP HÀNG                                             ");
+                Console.WriteLine("     ═══════════════════════════════════════════════════════════════════════════════════════════════════════  ");
+                Console.WriteLine();
+                Console.WriteLine("              Mã:                         Nhà cung cấp:                        Ngày nhập:   /  /        ");
+                Console.WriteLine();
+                Console.WriteLine("     -------------------------------------------------------------------------------------------------------");
+                Console.WriteLine("                        Mã vật liệu     ║   Giá nhập    ║    Số lượng     ║    Thành tiền                      ");
+
+
+                HDNhap hdn=new HDNhap();
+                string mahdn;
+
+                int x = 4;//vị trí cột thông báo
+                int y = 25; //vị trí dòng của thông báo
+                while (true)
+                {
+                    Console.SetCursorPosition(18, 5);
+                    mahdn = Console.ReadLine();
+                    try
+                    {
+                        hdn=hoadonnhap.GetHDN(mahdn);
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Tool.WriteXY(y,x,ex.Message);
+                    }
+                }
+                Tool.WriteXY(y, x, "                                      ");
+
+                #region hiện thông tin cũ
+                Tool.WriteXY(5, 56, hdn.Tenncc);
+                Tool.WriteXY(5, 90, hdn.Ngaynhap.Day.ToString());
+                Tool.WriteXY(5, 93, hdn.Ngaynhap.Month.ToString());
+                Tool.WriteXY(5, 96, hdn.Ngaynhap.Year.ToString());
+
+                List<CTNhaphang> dsctnh = ctnhaphang.TimCTNH(hdn.Mahdn);
+                int i = 9;
+                foreach(CTNhaphang ctnh in dsctnh)
+                {
+                    Tool.WriteXY(i,0,"                                        ║               ║                 ║ ");
+                    Tool.WriteXY(i, 27, ctnh.Mavl);
+                    Tool.WriteXY(i, 44, String.Format("{0:0,0}",ctnh.Gianhap));
+                    Tool.WriteXY(i, 61, ctnh.Soluong.ToString());
+                    Tool.WriteXY(i, 79, String.Format("{0:0,0}",ctnh.Tongtien));
+                    i++;
+                }
+                Tool.WriteXY(i + 1,0,"     -------------------------------------------------------------------------------------------------------") ;
+                Tool.WriteXY(i + 2, 0, $"               Tổng tiền: {String.Format("{0:0,0}",hdn.Tongtien)}                                         ");
+                #endregion
+
+                //sửa ngày xuất
+                DateTime ngaynhap;
+                string ngay, thang, nam;
+                while (true)
+                {
+                    try
+                    {
+                        ngay = Tool.ReadInfoXY(5, 90, "  ");
+                        if (ngay == "")
+                        {
+                            ngay = hdn.Ngaynhap.Day.ToString();
+                        }
+                        thang = Tool.ReadInfoXY(5, 93, "  ");
+                        if (thang == "")
+                        {
+                            thang = hdn.Ngaynhap.Month.ToString();
+                        }
+                        nam = Tool.ReadInfoXY(5, 96, "  ");
+                        if (nam == "")
+                        {
+                            nam = hdn.Ngaynhap.Year.ToString();
+                        }
+
+                        ngaynhap = new DateTime(int.Parse(nam), int.Parse(thang), int.Parse(ngay));
+                        break;
+                    }
+                    catch (FormatException)
+                    {
+                        Tool.WriteXY(y, x, "Bạn nhập sai định dạng           ");
+
+                    }
+                    catch (Exception)
+                    {
+                        Tool.WriteXY(y, x, "Thời gian này không tồn tại      ");
+                    }
+                }
+                Tool.WriteXY(y, x, "                                                   ");
+                bool check = false;
+                if (ngaynhap != hdn.Ngaynhap)
+                {
+                    hdn.Ngaynhap = ngaynhap;
+                    check = true;
+                }
+
+                if (check)
+                {
+                    hoadonnhap.SuaHDN(hdn);
+                }
+
+                Tool.WriteXY(i + 4, 0, "Nhấn Enter để thoát, nếu sửa tiếp nhấn bất kì: ");
+                ConsoleKeyInfo key = Console.ReadKey();
+                Console.Clear();
+                if (key.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+            }
+
+            
+        }
 
         //vì hóa đơn nhập ít nên có thể hiển thị cả chi tiết hóa đơn
         public void HienDSHoadonnhapTimkiem(List<HDNhap> ds)
@@ -313,7 +431,7 @@ namespace Project.Presentation
             {
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.WriteLine($"                                                  HÓA ĐƠN {a.Mahdn}                                             ");
+                Console.WriteLine($"                                                  HÓA ĐƠN NHẬP {a.Mahdn}                                             ");
                 Console.WriteLine("     ═══════════════════════════════════════════════════════════════════════════════════════════════════════════   ");
                 Console.WriteLine();
                 Console.WriteLine($"      Nhà cung cấp:{a.Tenncc}                                        Ngày nhập: {a.Ngaynhap.Day}/{a.Ngaynhap.Month}/{a.Ngaynhap.Year}        ");
@@ -342,6 +460,7 @@ namespace Project.Presentation
                 Console.WriteLine($"  {a.Mahdn,-15}{a.Tenncc,-25}{a.Ngaynhap.Day + "/" + a.Ngaynhap.Month + "/" + a.Ngaynhap.Year,-20}{String.Format("{0:0,0}",a.Tongtien)}");
             }
         }
+
         public void Tim()
         {
             char check;
